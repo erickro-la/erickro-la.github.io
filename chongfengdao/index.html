@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冲锋岛 - 经典Q版横版格斗网游资料站，提供最新版本更新公告、职业技能攻略、副本BOSS机制解析及玩家社区互动指南。">
+    <meta name="keywords" content="冲锋岛, 冲锋岛攻略, 冲锋岛职业, 冲锋岛BOSS, 冲锋岛下载, 冲锋岛官网">
+    <title>冲锋岛 - 经典横版格斗网游资料与攻略指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b35; /* 充满活力的橙色 */
+            --secondary-color: #2a2a2a; /* 深色背景 */
+            --accent-color: #ffd700; /* 金色点缀 */
+            --text-color: #333;
+            --bg-light: #f4f6f9;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            color: var(--secondary-color);
+            transition: var(--transition);
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-login:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b35 100%);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwTDQwIDBIMjBMMCAyME00MCA0MFYyMEwwIDQwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIGZpbGw9Im5vbmUiLz48L2c+PC9zdmc+');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn-primary {
+            background-color: #fff;
+            color: var(--primary-color);
+            padding: 12px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Game Info Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .game-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .intro-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .intro-tags span {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #666;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Character Class Grid */
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .class-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .class-card:hover {
+            transform: translateY(-8px);
+            border-top-color: var(--primary-color);
+        }
+
+        .class-img {
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: rgba(0,0,0,0.1);
+        }
+
+        .class-info {
+            padding: 20px;
+        }
+
+        .class-info h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--secondary-color);
+        }
+
+        .class-info p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .class-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .class-tags span {
+            font-size: 12px;
+            padding: 3px 8px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            color: #555;
+        }
+
+        /* Map & Content List */
+        .content-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        .map-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .map-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .map-item:hover {
+            transform: scale(1.02);
+        }
+
+        .map-img {
+            height: 140px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        .map-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .map-info {
+            padding: 15px;
+        }
+
+        .map-info h5 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .map-info p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .sidebar {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            height: fit-content;
+        }
+
+        .sidebar h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .sidebar-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 8px;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list a {
+            display: block;
+            font-size: 14px;
+            color: #555;
+            transition: color 0.2s;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .sidebar-list .date {
+            font-size: 12px;
+            color: #999;
+            margin-right: 5px;
+        }
+
+        /* Download Section */
+        .download-section {
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 60px 0;
+            margin-top: 60px;
+        }
+
+        .download-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .download-info h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .download-info p {
+            color: #aaa;
+        }
+
+        .download-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+        }
+
+        .btn-outline {
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background-color: #fff;
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #888;
+            padding: 40px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .game-intro, .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .download-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+                冲锋岛 <span>Island Rush</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">职业介绍</a>
+                <a href="#">地图攻略</a>
+                <a href="#">装备养成</a>
+                <a href="#">社区论坛</a>
+            </nav>
+            <a href="#" class="btn-login">立即登录</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>重返童年，横版格斗的狂欢</h1>
+                <p>经典Q版横版动作网游《冲锋岛》经典回归，体验热血战斗与趣味社交的完美结合，开启你的冒险之旅。</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        立即下载
+                    </a>
+                    <a href="#" class="btn-outline">观看宣传片</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Intro -->
+        <section class="container">
+            <div class="section-title">
+                <h2>游戏简介</h2>
+            </div>
+            <div class="game-intro">
+                <div class="intro-text">
+                    <h3>横版战斗，策略为王</h3>
+                    <p>《冲锋岛》是一款以横版格斗为核心玩法的多人在线游戏。玩家将扮演来自不同星球的勇士，在充满奇幻色彩的岛屿世界中展开冒险。游戏融合了跑酷、战斗与社交元素，玩家可以通过跳跃、翻滚等动作躲避攻击，利用地形优势击败强大的BOSS。</p>
+                    <p>无论是单人挑战副本，还是与好友组队竞技，游戏都提供了丰富的玩法内容。独特的技能树系统和装备强化机制，让每一位玩家都能打造出属于自己的独特角色。</p>
+                    <div class="intro-tags">
+                        <span>Q版画风</span>
+                        <span>横版格斗</span>
+                        <span>多人在线</span>
+                        <span>社交互动</span>
+                        <span>跑酷元素</span>
+                    </div>
+                </div>
+                <div class="intro-visual" style="background: #fff; padding: 20px; border-radius: 12px; box-shadow: var(--card-shadow); text-align: center;">
+                    <div style="font-size: 80px; color: var(--primary-color); margin-bottom: 10px;">⚔️</div>
+                    <p style="font-weight: bold; color: var(--secondary-color);">技能组合是胜利的关键</p>
+                    <p style="font-size: 13px; color: #666; margin-top: 5px;">合理利用位移技能与连招</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Character Classes -->
+        <section class="container">
+            <div class="section-title">
+                <h2>经典职业</h2>
+            </div>
+            <div class="class-grid">
+                <article class="class-card">
+                    <div class="class-img" style="background-color: #e0f7fa;">🛡️</div>
+                    <div class="class-info">
+                        <h4>坦克骑士</h4>
+                        <p>防御力极高的前排角色，能够承受大量伤害，保护队友安全。</p>
+                        <div class="class-tags">
+                            <span>高防御</span><span>控制</span><span>守护</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="class-card">
+                    <div class="class-img" style="background-color: #fff3e0;">⚔️</div>
+                    <div class="class-info">
+                        <h4>剑士</h4>
+                        <p>平衡型战士，拥有强大的近战输出能力，适合新手入门。</p>
+                        <div class="class-tags">
+                            <span>近战</span><span>爆发</span><span>均衡</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="class-card">
+                    <div class="class-img" style="background-color: #fce4ec;">🔮</div>
+                    <div class="class-info">
+                        <h4>魔法师</h4>
+                        <p>掌控元素的力量，从远处释放强大的魔法攻击，控制战场。</p>
+                        <div class="class-tags">
+                            <span>远程</span><span>AOE</span><span>爆发</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="class-card">
+                    <div class="class-img" style="background-color: #e8f5e9;">🏹</div>
+                    <div class="class-info">
+                        <h4>神射手</h4>
+                        <p>敏捷的弓箭手，擅长中距离攻击，能够快速移动并打断敌人。</p>
+                        <div class="class-tags">
+                            <span>敏捷</span><span>射击</span><span>机动</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Content Area -->
+        <section class="container">
+            <div class="content-layout">
+                <div>
+                    <div class="section-title" style="text-align: left;">
+                        <h2>热门地图与副本</h2>
+                    </div>
+                    <div class="map-list">
+                        <div class="map-item">
+                            <div class="map-img">
+                                <img src="https://picsum.photos/seed/map1/400/300" alt="迷雾森林">
+                            </div>
+                            <div class="map-info">
+                                <h5>迷雾森林</h5>
+                                <p>新手教学区域，适合练级与熟悉操作。</p>
+                            </div>
+                        </div>
+                        <div class="map-item">
+                            <div class="map-img">
+                                <img src="https://picsum.photos/seed/map2/400/300" alt="火山遗迹">
+                            </div>
+                            <div class="map-info">
+                                <h5>火山遗迹</h5>
+                                <p>高等级玩家挑战区，掉落稀有装备。</p>
+                            </div>
+                        </div>
+                        <div class="map-item">
+                            <div class="map-img">
+                                <img src="https://picsum.photos/seed/map3/400/300" alt="天空之岛">
+                            </div>
+                            <div class="map-info">
+                                <h5>天空之岛</h5>
+                                <p>空中浮空岛，拥有独特的飞行机制。</p>
+                            </div>
+                        </div>
+                        <div class="map-item">
+                            <div class="map-img">
+                                <img src="https://picsum.photos/seed/map4/400/300" alt="最终决战地">
+                            </div>
+                            <div class="map-info">
+                                <h5>最终决战地</h5>
+                                <p>挑战世界BOSS，赢取至尊称号。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="sidebar">
+                    <h4>最新攻略</h4>
+                    <ul class="sidebar-list">
+                        <li>
+                            <a href="#">
+                                <span class="date">2023-10-24</span>
+                                <span>新手入门：如何快速提升等级？</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="date">2023-10-22</span>
+                                <span>职业分析：剑士与骑士的定位区别</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="date">2023-10-18</span>
+                                <span>副本攻略：火山遗迹BOSS机制详解</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="date">2023-10-15</span>
+                                <span>装备强化失败怎么办？保底技巧</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="date">2023-10-10</span>
+                                <span>活动预告：万圣节狂欢派对开启</span>
+                            </a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <div class="container download-box">
+                <div class="download-info">
+                    <h3>准备好开始冒险了吗？</h3>
+                    <p>支持Windows 7及以上系统，无需下载客户端，直接通过浏览器畅玩。</p>
+                </div>
+                <div class="download-actions">
+                    <a href="#" class="btn-download">立即游玩</a>
+                    <a href="#" class="btn-outline">查看版本更新</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h5>关于游戏</h5>
+                    <ul>
+                        <li><a href="#">游戏简介</a></li>
+                        <li><a href="#">运营团队</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>玩家支持</h5>
+                    <ul>
+                        <li><a href="#">新手指南</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">客服中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>法律信息</h5>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">防沉迷系统</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 冲锋岛资料站. All Rights Reserved. 本站为玩家非官方攻略站点。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
