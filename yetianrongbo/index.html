@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="叶添荣博客 - 分享个人技术见解、Web开发经验与数字化生活思考。提供前端开发、后端架构、个人成长及效率工具的深度阅读与交流平台。">
+    <meta name="keywords" content="叶添荣博客, Web开发, 前端技术, 个人博客, 技术分享, 架构设计">
+    <title>叶添荣博客 - 技术见解与数字化生活</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #475569;
+            --border-color: #e2e8f0;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-sub);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            border-color: var(--border-color);
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            padding: 4rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Main Content Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        /* Article List */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+            margin-left: 1rem;
+        }
+
+        .article-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .article-title {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .article-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .article-excerpt {
+            color: var(--text-sub);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .category-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background-color: #f1f5f9;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .profile-widget {
+            text-align: center;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            object-fit: cover;
+            border: 3px solid #eff6ff;
+        }
+
+        .profile-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-bio {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Newsletter */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e293b;
+            color: #94a3b8;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tags {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>叶</span>添荣博客
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">技术文章</a></li>
+                    <li><a href="#">项目实战</a></li>
+                    <li><a href="#">随笔杂谈</a></li>
+                    <li><a href="#">关于我</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">RSS订阅</a>
+                <a href="#contact" class="btn btn-primary">留言板</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>探索代码与生活的边界</h1>
+                <p>欢迎来到叶添荣的个人技术空间。这里记录Web开发的深度实践、系统架构的设计思路，以及数字化工具的高效使用方法。</p>
+                <div class="hero-tags">
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">前端架构</span>
+                    <span class="tag">效率工具</span>
+                    <span class="tag">个人成长</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container main-layout">
+            <!-- Left Column: Articles -->
+            <div class="content-area">
+                <div class="section-title">
+                    <span>最新发布</span>
+                    <a href="#" style="font-size: 0.9rem; font-weight: 400;">查看归档 &rarr;</a>
+                </div>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <time>2023-10-24</time>
+                        <span>分类：前端开发</span>
+                    </div>
+                    <h2 class="article-title"><a href="#">深入理解现代前端工程化构建工具的优化策略</a></h2>
+                    <p class="article-excerpt">
+                        随着项目体积的增大，构建速度成为了影响开发体验的关键因素。本文将探讨Webpack与Vite在构建原理上的差异，以及如何通过Tree Shaking、代码分割和缓存策略来显著提升打包效率，为大型应用提供性能优化指南。
+                    </p>
+                    <div class="article-footer">
+                        <span>阅读 1,240 次</span>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <time>2023-10-18</time>
+                        <span>分类：后端架构</span>
+                    </div>
+                    <h2 class="article-title"><a href="#">微服务架构下的数据一致性解决方案探讨</a></h2>
+                    <p class="article-excerpt">
+                        在分布式系统中，如何保证跨服务的数据一致性是架构师必须面对的难题。本文分析了最终一致性模型，对比了Saga模式、TCC（Try-Confirm-Cancel）以及基于消息队列的分布式事务方案，并结合实际业务场景给出选型建议。
+                    </p>
+                    <div class="article-footer">
+                        <span>阅读 856 次</span>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <time>2023-10-05</time>
+                        <span>分类：效率工具</span>
+                    </div>
+                    <h2 class="article-title"><a href="#">打造沉浸式开发环境：VS Code 插件推荐清单</a></h2>
+                    <p class="article-excerpt">
+                        一个优秀的编辑器配置能提升50%的编码效率。从GitLens到Prettier，从Live Server到ESLint，这份清单将帮助你配置一个既美观又高效的VS Code工作区，助你告别繁琐的重复劳动。
+                    </p>
+                    <div class="article-footer">
+                        <span>阅读 2,103 次</span>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-meta">
+                        <time>2023-09-28</time>
+                        <span>分类：随笔杂谈</span>
+                    </div>
+                    <h2 class="article-title"><a href="#">程序员的时间管理：从番茄工作法到GTD</a></h2>
+                    <p class="article-excerpt">
+                        技术能力决定了我们能走多远，而时间管理决定了我们能走多快。本文回顾了几种经典的时间管理方法论，并尝试将其与日常编程工作相结合，建立一套适合自己的个人效能系统。
+                    </p>
+                    <div class="article-footer">
+                        <span>阅读 945 次</span>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <aside class="sidebar">
+                <!-- Profile Widget -->
+                <div class="sidebar-widget profile-widget">
+                    <img src="https://picsum.photos/seed/ye/200/200" alt="叶添荣头像" class="avatar">
+                    <h3 class="profile-name">叶添荣</h3>
+                    <p class="profile-bio">全栈开发者 / 技术博主 / 终身学习者</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="GitHub">G</a>
+                        <a href="#" class="social-icon" title="Twitter">T</a>
+                        <a href="#" class="social-icon" title="Email">@</a>
+                    </div>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">文章分类</h3>
+                    <ul class="category-list">
+                        <li><a href="#">前端技术 <span class="category-count">12</span></a></li>
+                        <li><a href="#">后端开发 <span class="category-count">8</span></a></li>
+                        <li><a href="#">架构设计 <span class="category-count">5</span></a></li>
+                        <li><a href="#">运维部署 <span class="category-count">6</span></a></li>
+                        <li><a href="#">生活随笔 <span class="category-count">15</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">订阅更新</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-sub); margin-bottom: 1rem;">每周发送技术干货与最新文章，无垃圾邮件。</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('感谢订阅！这是演示页面，未连接后台。');">
+                        <input type="email" placeholder="您的邮箱地址" required>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">立即订阅</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于叶添荣博客</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        致力于分享高质量的原创技术内容，帮助开发者解决实际问题，共同进步。这里不仅是代码的堆砌，更是思想的碰撞。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">网站地图</a></li>
+                        <li><a href="#">关于作者</a></li>
+                        <li><a href="#">友情链接</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>法律声明</h4>
+                    <ul>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 叶添荣博客 版权所有. 保留所有权利.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
